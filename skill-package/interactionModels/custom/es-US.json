@@ -1,0 +1,175 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "sabio digital",
+      "intents": [
+        {
+          "name": "AskIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery",
+              "samples": [
+                "{query}"
+              ]
+            }
+          ],
+          "samples": [
+            "quiero saber {query}",
+            "explícame {query}",
+            "cuéntame {query}",
+            "dime {query}",
+            "necesito saber {query}",
+            "crea {query}",
+            "inventa {query}",
+            "escribe {query}",
+            "tengo una duda sobre {query}"
+          ]
+        },
+        {
+          "name": "AskGeminiIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "con gemini {query}",
+            "pregúntale a gemini {query}",
+            "usa gemini para {query}",
+            "que gemini {query}"
+          ]
+        },
+        {
+          "name": "AskOpenAIIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "con chatgpt {query}",
+            "con chat gpt {query}",
+            "pregúntale a chatgpt {query}",
+            "con openai {query}",
+            "usa openai para {query}",
+            "usa chatgpt para {query}"
+          ]
+        },
+        {
+          "name": "AskQueIntent",
+          "slots": [{ "name": "query", "type": "AMAZON.SearchQuery" }],
+          "samples": ["qué {query}"]
+        },
+        {
+          "name": "AskCuandoIntent",
+          "slots": [{ "name": "query", "type": "AMAZON.SearchQuery" }],
+          "samples": ["cuándo {query}"]
+        },
+        {
+          "name": "AskQuienIntent",
+          "slots": [{ "name": "query", "type": "AMAZON.SearchQuery" }],
+          "samples": ["quién {query}", "quiénes {query}"]
+        },
+        {
+          "name": "AskComoIntent",
+          "slots": [{ "name": "query", "type": "AMAZON.SearchQuery" }],
+          "samples": ["cómo {query}"]
+        },
+        {
+          "name": "AskDondeIntent",
+          "slots": [{ "name": "query", "type": "AMAZON.SearchQuery" }],
+          "samples": ["dónde {query}"]
+        },
+        {
+          "name": "AskPorQueIntent",
+          "slots": [{ "name": "query", "type": "AMAZON.SearchQuery" }],
+          "samples": ["por qué {query}"]
+        },
+        {
+          "name": "AskCualIntent",
+          "slots": [{ "name": "query", "type": "AMAZON.SearchQuery" }],
+          "samples": ["cuál {query}", "cuáles {query}"]
+        },
+        {
+          "name": "AskCuantoIntent",
+          "slots": [{ "name": "query", "type": "AMAZON.SearchQuery" }],
+          "samples": ["cuánto {query}", "cuántos {query}", "cuántas {query}"]
+        },
+        {
+          "name": "ContinueIntent",
+          "slots": [],
+          "samples": [
+            "sigue",
+            "continúa",
+            "continua",
+            "dale",
+            "adelante",
+            "sigue por favor",
+            "la siguiente parte"
+          ]
+        },
+        { "name": "AMAZON.YesIntent", "samples": [] },
+        { "name": "AMAZON.NoIntent", "samples": [] },
+        { "name": "AMAZON.NextIntent", "samples": [] },
+        {
+          "name": "AMAZON.PreviousIntent",
+          "samples": [
+            "vuelve a la parte anterior",
+            "la parte anterior"
+          ]
+        },
+        { "name": "AMAZON.RepeatIntent", "samples": [] },
+        { "name": "AMAZON.ResumeIntent", "samples": [] },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "para",
+            "detente",
+            "basta"
+          ]
+        },
+        { "name": "AMAZON.CancelIntent", "samples": [] },
+        { "name": "AMAZON.HelpIntent", "samples": [] },
+        { "name": "AMAZON.FallbackIntent", "samples": [] },
+        { "name": "AMAZON.NavigateHomeIntent", "samples": [] }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "AskIntent",
+          "delegationStrategy": "SKILL_RESPONSE",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.query"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "SKILL_RESPONSE"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.query",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Dime."
+          }
+        ]
+      }
+    ]
+  }
+}
