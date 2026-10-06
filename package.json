@@ -1,0 +1,36 @@
+{
+  "name": "alexa_gpt",
+  "version": "1.0.0",
+  "description": "Alexa Custom Skill Gateway for OpenAI and Gemini LLMs",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "alexa",
+    "skill",
+    "llm",
+    "openai",
+    "gemini",
+    "voice"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^0.1.2",
+    "ask-sdk-core": "^2.14.0",
+    "ask-sdk-model": "^1.38.0",
+    "fastify": "^5.2.1",
+    "openai": "^4.86.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}
