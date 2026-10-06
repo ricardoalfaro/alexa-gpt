@@ -21,7 +21,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@google/genai": "^0.1.2",
+    "@google/generative-ai": "^0.24.1",
     "ask-sdk-core": "^2.14.0",
     "ask-sdk-model": "^1.38.0",
     "fastify": "^5.2.1",
