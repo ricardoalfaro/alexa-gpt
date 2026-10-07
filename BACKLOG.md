@@ -21,13 +21,10 @@ Este documento contiene las ideas, mejoras y funcionalidades planificadas para e
 ---
 
 ## 📋 Fase 2: Robustez, Hosting y Persistencia
-- [ ] **Persistencia permanente de sesiones**:
-  - Reemplazar `InMemoryConversationStore` por adaptador Redis o PostgreSQL / Supabase para mantener sesiones activas ante reinicios del backend.
-- [ ] **Despliegue Serverless / Cloud**:
-  - Configurar Dockerfile optimizado.
-  - Opciones de hosting continuo: AWS Lambda (con AWS API Gateway o función Lambda directa para Alexa) / Fly.io / Render / Railway.
-- [ ] **Verificación criptográfica estricta de solicitudes Alexa**:
-  - Activación por defecto de validación de firma (`Signature-256`, cert chain) y timestamps (<150s) para modo de producción.
+- [x] **Persistencia permanente de sesiones con Supabase**:
+  - Implementado `SupabaseConversationStore` con `@supabase/supabase-js` para persistencia duradera de conversaciones entre invocaciones serverless.
+- [x] **Despliegue Serverless con Vercel**:
+  - Implementado entrypoint `api/index.ts` y `vercel.json` con reescritura transparente hacia Fastify.
 - [ ] **Métricas y observabilidad avanzada**:
   - Dashboard de latencias (TTFB, generación de modelo, tiempo total Alexa).
   - Alertas ante agotamiento de cuota o timeouts de proveedores de IA.

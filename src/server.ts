@@ -6,6 +6,8 @@ import { OpenAIProvider } from './providers/openaiProvider.js';
 import { GeminiProvider } from './providers/geminiProvider.js';
 import { ModelRouter } from './router/modelRouter.js';
 import { InMemoryConversationStore } from './conversation/inMemoryStore.js';
+import { SupabaseConversationStore } from './conversation/supabaseStore.js';
+import { ConversationStore } from './conversation/conversationStore.js';
 import { ConversationManager } from './conversation/conversationManager.js';
 import { LongResponseManager } from './longform/longResponseManager.js';
 import { AIOrchestrator } from './orchestrator/aiOrchestrator.js';
@@ -30,9 +32,12 @@ export async function buildServer() {
   registry.register(openAiProvider);
   registry.register(geminiProvider);
 
-  // 2. Router, Memoria y Manejador de respuestas largas
+  // 2. Router, Memoria (Supabase o InMemory) y Manejador de respuestas largas
   const router = new ModelRouter(registry);
-  const convoStore = new InMemoryConversationStore();
+  const convoStore: ConversationStore = (config.supabaseUrl && config.supabaseKey)
+    ? new SupabaseConversationStore(config.supabaseUrl, config.supabaseKey)
+    : new InMemoryConversationStore();
+
   const conversationManager = new ConversationManager(convoStore, config.conversationTtlMinutes);
   const longResponseManager = new LongResponseManager(config.conversationTtlMinutes);
 

@@ -11,6 +11,8 @@ export interface Config {
   logPrompts: boolean;
   verifyAlexaSignature: boolean;
   alexaSkillId?: string;
+  supabaseUrl?: string;
+  supabaseKey?: string;
 }
 
 export function loadConfig(): Config {
@@ -24,6 +26,8 @@ export function loadConfig(): Config {
     conversationTtlMinutes: parseInt(process.env.CONVERSATION_TTL_MINUTES || '30', 10),
     logPrompts: process.env.LOG_PROMPTS === 'true',
     verifyAlexaSignature: process.env.VERIFY_ALEXA_SIGNATURE === 'true',
-    alexaSkillId: process.env.ALEXA_SKILL_ID || undefined
+    alexaSkillId: process.env.ALEXA_SKILL_ID || undefined,
+    supabaseUrl: process.env.SUPABASE_URL || undefined,
+    supabaseKey: process.env.SUPABASE_KEY || undefined
   };
 }
